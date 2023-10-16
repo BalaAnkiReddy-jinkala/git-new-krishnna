@@ -1,0 +1,53 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: department-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: postgres
+    password: pass
+  jpa:
+#    show-sql: true
+    properties:
+      hibernate:
+#        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+  output:
+    ansi:
+      enabled: always
+  # MailHog provides a local SMTP server for capturing and viewing emails during local development/testing.
+  mail:
+    host: ${EMAIL_HOST:localhost}
+    port: 1025
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+#  You can also use Mailtrap which is an Email Delivery Platform. You have to create an account https://mailtrap.io/
+#  mail:
+#    host: smtp.mailtrap.io
+#    port: 25
+#    protocol: smtp
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#    username: <put-your-smtp-username>
+#    password: <put-your-smtp-password>
+
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    default-models-expand-depth: -1
+  version: '@springdoc-openapi-starter-webmvc-ui.version@'
